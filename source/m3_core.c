@@ -613,3 +613,11 @@ void  ClearBacktrace  (IM3Runtime io_runtime)
     io_runtime->backtrace.lastFrame = NULL;
 }
 #endif // d_m3RecordBacktraces
+
+/* Added by magnetite-swap build.rs for fixed-heap hot-swap */
+#ifdef d_m3FixedHeap
+void wasm3_heap_reset(void) {
+	fixedHeapPtr  = fixedHeap;
+	fixedHeapLast = NULL;
+}
+#endif
